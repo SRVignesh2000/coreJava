@@ -2,6 +2,13 @@ package in.vigneshramachandran.srcatering.model;
 
 public class User {
 	
+	int id;
+	String firstName;
+	String lastName;
+	String email;
+	String password;
+	boolean isActive;
+	
 	public int getId() {
 		return id;
 	}
@@ -56,12 +63,6 @@ public class User {
 				+ ", password=" + password + ", isActive=" + isActive + "]";
 	}
 
-	int id;
-	String firstName;
-	String lastName;
-	String email;
-	String password;
-	boolean isActive;
 	
 	public String fullName() {
 		return firstName.concat(" ").concat(lastName);
