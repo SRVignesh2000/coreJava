@@ -1,22 +1,25 @@
 package in.vigneshramachandran.srcatering.validation;
 
+import java.time.LocalDate;
+
+import in.vigneshramachandran.srcatering.exception.ValidationException;
 import in.vigneshramachandran.srcatering.model.Task;
+import in.vigneshramachandran.srcatering.util.StringUtil;
 
 public class TaskValidator {
 
-	public static void validate(Task task) throws Exception {
+	public static void validate(Task newTask) throws Exception {
 		
-		if(task == null) {
-			throw new Exception("Invalid task input");
+		if(newTask == null) {
+			throw new ValidationException("Invalid task input");
 		}
 		
-		// validate firstname
-		if(task.getName() == null || ("").equals(task.getName().trim())) {
-			throw new Exception("Name cannot be null");
-		}
+		StringUtil.rejectIfInvalidDate(newTask.getDueDate(), "due date");
 		
-		
+		StringUtil.rejectIfInvalidString(newTask.getName(), "name");
 		
 	}
+	
+
 
 }

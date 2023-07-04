@@ -1,5 +1,7 @@
 package in.vigneshramachandran.srcatering;
 
+import java.time.LocalDate;
+
 import in.vigneshramachandran.srcatering.dao.TaskDAO;
 import in.vigneshramachandran.srcatering.model.Task;
 import in.vigneshramachandran.srcatering.model.User;
@@ -44,7 +46,9 @@ public class App {
 
 			newTask.setId(12345);
 			newTask.setName("Write");
-			newTask.setDueDate("06-07-2023");
+			String date = "06-07-2023";
+			LocalDate convert = taskservice.convertToDate(date);
+			newTask.setDueDate(convert);
 			newTask.setActive(true);
 			
 			taskservice.create(newTask);
@@ -55,9 +59,14 @@ public class App {
 
 		
 		
-		taskservice.update();
-		taskservice.delete();
-		taskservice.findById(12345);
+//		try {
+//			taskservice.update();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		taskservice.delete();
+//		taskservice.findById(12345);
 		taskservice.getAll();
 
 	}

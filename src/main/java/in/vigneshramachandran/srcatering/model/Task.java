@@ -1,10 +1,12 @@
 package in.vigneshramachandran.srcatering.model;
 
+import java.time.LocalDate;
+
 public class Task {
 
 	int id;
 	String name;
-	String dueDate;
+	LocalDate dueDate;
 	boolean isActive;
 	
 	public int getId() {
@@ -25,10 +27,10 @@ public class Task {
 	}
 	
 	
-	public String getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(String dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 	

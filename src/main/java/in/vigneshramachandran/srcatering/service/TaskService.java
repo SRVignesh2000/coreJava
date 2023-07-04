@@ -1,7 +1,11 @@
 package in.vigneshramachandran.srcatering.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import in.vigneshramachandran.srcatering.dao.TaskDAO;
 import in.vigneshramachandran.srcatering.model.Task;
+import in.vigneshramachandran.srcatering.validation.TaskValidator;
 
 public class TaskService {
 
@@ -25,15 +29,30 @@ public class TaskService {
 	/**
 	 * 
 	 * @param newTask
+	 * @throws Exception 
 	 */
-	public void create(Task newTask) {
+	public void create(Task newTask) throws Exception {
+		// validation
+		TaskValidator.validate(newTask);
 		
-		TaskDAO taskdao = new TaskDAO();
+		TaskDAO taskdao = new TaskDAO();		
 		taskdao.create(newTask);
 		
 	}
 	
-	public void update() {
+	public static LocalDate convertToDate(String date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		
+		try {
+			LocalDate localDate = LocalDate.parse(date, formatter);
+			return localDate;
+		} catch (Exception e) {
+			System.out.println("Invalid date format!");
+			return null;
+		}
+	}
+	
+	public void update() throws Exception {
 		
 		TaskDAO taskdao = new TaskDAO();
 		
@@ -41,8 +60,11 @@ public class TaskService {
 
 		newTask.setId(12345);
 		newTask.setName("Walking");
-		newTask.setDueDate("06-07-2023");
+		String date = "06-07-2023";
+		convertToDate(date);
 		newTask.setActive(true);
+		
+		TaskValidator.validate(newTask);
 		
 		taskdao.update(newTask);
 	}
@@ -56,9 +78,6 @@ public class TaskService {
 		Task newTask = new Task();
 		
 		newTask.setId(12345);
-		newTask.setName("Walking");
-		newTask.setDueDate("2023-07-06");
-		newTask.setActive(true);
 		
 		taskdao.delete(newTask);
 		
@@ -70,7 +89,6 @@ public class TaskService {
 		TaskDAO taskdao = new TaskDAO();
 		
 		taskdao.findById(taskId);
-		
 	}
 	
 	

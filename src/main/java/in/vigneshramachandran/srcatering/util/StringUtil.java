@@ -1,5 +1,7 @@
 package in.vigneshramachandran.srcatering.util;
 
+import java.time.LocalDate;
+
 import in.vigneshramachandran.srcatering.exception.ValidationException;
 
 public class StringUtil {
@@ -30,6 +32,16 @@ public class StringUtil {
 	}
 	
 	
+	
+	public static void rejectIfInvalidDate(LocalDate input, String inputName) throws Exception {
+		
+		LocalDate date = LocalDate.now();
+		
+		if(input.isBefore(date)) {
+			throw new ValidationException(inputName.concat(" Invalid"));
+		}
+		
+	}
 	
 	
 }
