@@ -11,7 +11,7 @@ public static void validate(Task newTask) throws ValidationException {
 		}
 
 		StringUtil.rejectIfInvalidString(newTask.getTaskName(), "Taskname");
-		StringUtil.rejectIfInvalidDate(newTask.getDueDate(), "Due Date");
+		StringUtil.rejectIfInvalidDate(newTask.getDueDate(), "Duedate ");
 
 
 

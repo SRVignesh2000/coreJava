@@ -13,7 +13,8 @@ public class TaskService {
 	TaskDAO taskDAO = new TaskDAO();
 
 	public static LocalDate convertToDate(String dateString) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 		try {
 			LocalDate localDate = LocalDate.parse(dateString, formatter);
@@ -46,15 +47,10 @@ public class TaskService {
 
 	}
 
-	public void findById(int id) {
-
-		taskDAO.findById(id);
-
-	}
 
 	public int count() {
+		
 		return taskDAO.count();
-
 	}
 
 	public List<Task> getAll() {
@@ -63,6 +59,17 @@ public class TaskService {
 
 		return TaskList;
 
+	}
+	
+	public Task findById(int id) {
+
+		return taskDAO.findById(id);
+
+	}
+	
+	public List<Task> findByDuedate(LocalDate duedate) {
+		
+		return taskDAO.findByDuedate(duedate);
 	}
 
 }

@@ -42,9 +42,9 @@ public class UserService {
 
 	}
 
-	public void findByEmail(String Email) {
+	public User findByEmail(String Email) {
 
-		userdao.findByEmail(Email);
+		return userdao.findByEmail(Email);
 
 	}
 

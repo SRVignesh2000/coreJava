@@ -16,16 +16,15 @@ public class TestCreateTask {
 
 	@Test
 	public void testCreateTaskWithValidInput() {
+		
 		TaskService taskservice = new TaskService();
 
 		Task newTask = new Task();
 
-		newTask.setTaskID(12345);
 		newTask.setTaskName("Write");
-		String date = "06-07-2023";
+		String date = "06-11-2023";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
-		newTask.setActive(true);
 
 		assertDoesNotThrow(() -> {
 			taskservice.create(newTask);
@@ -40,7 +39,7 @@ public class TestCreateTask {
 			taskservice.create(null);
 		});
 
-		String expectedMessage = "Invalid task input";
+		String expectedMessage = "Invalid Task Input";
 		String actualMessage = exception.getMessage();
 		assertTrue(expectedMessage.equals(actualMessage));
 	}
@@ -52,17 +51,16 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setTaskID(12345);
 		newTask.setTaskName(null);
 		String date = "06-07-2023";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
-		newTask.setActive(true);
+
 		
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			taskservice.create(newTask);
 		});
-		String expectedMessage = "name cannot be null or empty";
+		String expectedMessage = "Taskname cannot be null or empty";
 		String actualMessage = exception.getMessage();
 		assertTrue(expectedMessage.equals(actualMessage));
 
@@ -75,17 +73,15 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setTaskID(12345);
 		newTask.setTaskName("");
 		String date = "06-07-2023";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
-		newTask.setActive(true);
 		
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			taskservice.create(newTask);
 		});
-		String expectedMessage = "name cannot be null or empty";
+		String expectedMessage = "Taskname cannot be null or empty";
 		String actualMessage = exception.getMessage();
 		assertTrue(expectedMessage.equals(actualMessage));
 
@@ -97,17 +93,15 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setTaskID(12345);
 		newTask.setTaskName("Write");
 		String date = "06-08-2022";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
-		newTask.setActive(true);
 		
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			taskservice.create(newTask);
 		});
-		String expectedMessage = "due date Invalid";
+		String expectedMessage = "Duedate Invalid";
 		String actualMessage = exception.getMessage();
 		assertTrue(expectedMessage.equals(actualMessage));
 
