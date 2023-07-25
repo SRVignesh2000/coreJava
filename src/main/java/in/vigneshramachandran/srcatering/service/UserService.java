@@ -1,70 +1,57 @@
 package in.vigneshramachandran.srcatering.service;
 
-import java.util.Arrays;
+import java.util.List;
 
 import in.vigneshramachandran.srcatering.dao.UserDAO;
-import in.vigneshramachandran.srcatering.dao.UserList;
+import in.vigneshramachandran.srcatering.exception.ValidationException;
 import in.vigneshramachandran.srcatering.model.User;
 import in.vigneshramachandran.srcatering.validation.UserValidator;
 
 public class UserService {
+	UserDAO userdao = new UserDAO();
 
-	public User[] getAll() {
+	public void create(User user) throws ValidationException, RuntimeException {
+		UserValidator.validate(user);
+		userdao.create(user);
+	}
 
-		UserDAO userdao = new UserDAO();
-
-		User[] userList = userdao.findAll();
-
-		for (int i = 0; i < userList.length; i++) {
-			System.out.println(userList[i]);
-		}
-
-//		System.out.println(Arrays.toString(userList));
-
-		return userList;
+	public int count() {
+		
+		return userdao.count();
 
 	}
 
-	public void create(User newUser) throws Exception {
+	public void update(int newId, User newUser) throws ValidationException {
+
 		UserValidator.validate(newUser);
-		UserDAO userdao = new UserDAO();
 
-		userdao.create(newUser);
+		userdao.update(newId, newUser);
 
-//		userdao.create(newUser1);
 	}
 
-	public void update() {// args id, email and user
+	public void delete(int Id) {
 
-		UserDAO userdao = new UserDAO();
+		userdao.delete(Id);
 
-		User newUser1 = new User();
-
-		newUser1.setId(334455);
-		newUser1.setFirstName("SR");
-		newUser1.setLastName("Vignesh");
-		newUser1.setEmail("maruthanalagar@fssa.freshworks.com");
-
-		userdao.update(newUser1);
 	}
 
-	public void delete() {
-		UserDAO userdao = new UserDAO();
+	public User findById(int newId) {
 
-		User newUser1 = new User();
+		return userdao.findById(newId);
+		
 
-		newUser1.setId(334455);
-
-		userdao.delete(newUser1);
 	}
-//
-//	public void findById() {
-//		UserDAO userdao = new UserDAO();
-//
-//		int userId = 334455;
-//		User findUser = userdao.findById(userId);
-//		System.out.println("findUser" + findUser);
-//
-//	}
+
+	public void findByEmail(String Email) {
+
+		userdao.findByEmail(Email);
+
+	}
+
+	public List<User> getAll() {
+
+		return userdao.findAll();
+
+	}
 
 }

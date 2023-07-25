@@ -1,0 +1,61 @@
+-------------------------------------------------------------------------------
+Test set: in.vigneshramachandran.srcatering.TestCreateTask
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.154 s <<< FAILURE! - in in.vigneshramachandran.srcatering.TestCreateTask
+in.vigneshramachandran.srcatering.TestCreateTask.testCreateTaskWithValidInput()  Time elapsed: 0.127 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.isBefore(java.time.chrono.ChronoLocalDate)" because "input" is null
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at in.vigneshramachandran.srcatering.TestCreateTask.testCreateTaskWithValidInput(TestCreateTask.java:30)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.isBefore(java.time.chrono.ChronoLocalDate)" because "input" is null
+	at in.vigneshramachandran.srcatering.util.StringUtil.rejectIfInvalidDate(StringUtil.java:40)
+	at in.vigneshramachandran.srcatering.validation.TaskValidator.validate(TaskValidator.java:16)
+	at in.vigneshramachandran.srcatering.service.TaskService.create(TaskService.java:30)
+	at in.vigneshramachandran.srcatering.TestCreateTask.lambda$testCreateTaskWithValidInput$0(TestCreateTask.java:31)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 16 more
+
+in.vigneshramachandran.srcatering.TestCreateTask.testCreateUserWithNameNull()  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <in.vigneshramachandran.srcatering.exception.ValidationException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:65)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:37)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3082)
+	at in.vigneshramachandran.srcatering.TestCreateTask.testCreateUserWithNameNull(TestCreateTask.java:62)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.isBefore(java.time.chrono.ChronoLocalDate)" because "input" is null
+	at in.vigneshramachandran.srcatering.util.StringUtil.rejectIfInvalidDate(StringUtil.java:40)
+	at in.vigneshramachandran.srcatering.validation.TaskValidator.validate(TaskValidator.java:16)
+	at in.vigneshramachandran.srcatering.service.TaskService.create(TaskService.java:30)
+	at in.vigneshramachandran.srcatering.TestCreateTask.lambda$testCreateUserWithNameNull$2(TestCreateTask.java:63)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:55)
+	... 16 more
+
+in.vigneshramachandran.srcatering.TestCreateTask.testCreateUserWithNameEmpty()  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <in.vigneshramachandran.srcatering.exception.ValidationException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:65)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:37)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3082)
+	at in.vigneshramachandran.srcatering.TestCreateTask.testCreateUserWithNameEmpty(TestCreateTask.java:85)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.isBefore(java.time.chrono.ChronoLocalDate)" because "input" is null
+	at in.vigneshramachandran.srcatering.util.StringUtil.rejectIfInvalidDate(StringUtil.java:40)
+	at in.vigneshramachandran.srcatering.validation.TaskValidator.validate(TaskValidator.java:16)
+	at in.vigneshramachandran.srcatering.service.TaskService.create(TaskService.java:30)
+	at in.vigneshramachandran.srcatering.TestCreateTask.lambda$testCreateUserWithNameEmpty$3(TestCreateTask.java:86)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:55)
+	... 16 more
+
+in.vigneshramachandran.srcatering.TestCreateTask.testCreateUserWithInvalidDueDate()  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <in.vigneshramachandran.srcatering.exception.ValidationException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:65)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:37)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3082)
+	at in.vigneshramachandran.srcatering.TestCreateTask.testCreateUserWithInvalidDueDate(TestCreateTask.java:107)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.isBefore(java.time.chrono.ChronoLocalDate)" because "input" is null
+	at in.vigneshramachandran.srcatering.util.StringUtil.rejectIfInvalidDate(StringUtil.java:40)
+	at in.vigneshramachandran.srcatering.validation.TaskValidator.validate(TaskValidator.java:16)
+	at in.vigneshramachandran.srcatering.service.TaskService.create(TaskService.java:30)
+	at in.vigneshramachandran.srcatering.TestCreateTask.lambda$testCreateUserWithInvalidDueDate$4(TestCreateTask.java:108)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:55)
+	... 16 more
+

@@ -20,8 +20,8 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setId(12345);
-		newTask.setName("Write");
+		newTask.setTaskID(12345);
+		newTask.setTaskName("Write");
 		String date = "06-07-2023";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
@@ -52,8 +52,8 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setId(12345);
-		newTask.setName(null);
+		newTask.setTaskID(12345);
+		newTask.setTaskName(null);
 		String date = "06-07-2023";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
@@ -75,8 +75,8 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setId(12345);
-		newTask.setName("");
+		newTask.setTaskID(12345);
+		newTask.setTaskName("");
 		String date = "06-07-2023";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);
@@ -97,8 +97,8 @@ public class TestCreateTask {
 
 		Task newTask = new Task();
 
-		newTask.setId(12345);
-		newTask.setName("Write");
+		newTask.setTaskID(12345);
+		newTask.setTaskName("Write");
 		String date = "06-08-2022";
 		LocalDate convert = TaskService.convertToDate(date);
 		newTask.setDueDate(convert);

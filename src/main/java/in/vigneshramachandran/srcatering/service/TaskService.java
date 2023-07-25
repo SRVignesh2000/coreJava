@@ -2,95 +2,67 @@ package in.vigneshramachandran.srcatering.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import in.vigneshramachandran.srcatering.dao.TaskDAO;
+import in.vigneshramachandran.srcatering.exception.ValidationException;
 import in.vigneshramachandran.srcatering.model.Task;
 import in.vigneshramachandran.srcatering.validation.TaskValidator;
 
 public class TaskService {
+	TaskDAO taskDAO = new TaskDAO();
 
-	/**
-	 * 
-	 * @return
-	 */
-	public Task[] getAll() {
-		
-		TaskDAO taskdao = new TaskDAO();
-		
-		Task[] tasklist = taskdao.findAll();
-		
-		for(int i=0; i<tasklist.length; i++) {
-			System.out.println(tasklist[i]);
-		}
-		
-		return tasklist;
-	}
-	
-	/**
-	 * 
-	 * @param newTask
-	 * @throws Exception 
-	 */
-	public void create(Task newTask) throws Exception {
-		// validation
-		TaskValidator.validate(newTask);
-		
-		TaskDAO taskdao = new TaskDAO();		
-		taskdao.create(newTask);
-		
-	}
-	
-	public static LocalDate convertToDate(String date) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		
+	public static LocalDate convertToDate(String dateString) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 		try {
-			LocalDate localDate = LocalDate.parse(date, formatter);
+			LocalDate localDate = LocalDate.parse(dateString, formatter);
 			return localDate;
 		} catch (Exception e) {
 			System.out.println("Invalid date format!");
 			return null;
 		}
 	}
-	
-	public void update() throws Exception {
-		
-		TaskDAO taskdao = new TaskDAO();
-		
-		Task newTask = new Task();
 
-		newTask.setId(12345);
-		newTask.setName("Walking");
-		String date = "06-07-2023";
-		convertToDate(date);
-		newTask.setActive(true);
-		
-		TaskValidator.validate(newTask);
-		
-		taskdao.update(newTask);
+	public void create(Task task) throws Exception {
+
+		TaskValidator.validate(task);
+
+		taskDAO.create(task);
+
 	}
-	
-	/**
-	 * 
-	 */
-	public void delete() {
-		TaskDAO taskdao = new TaskDAO();
-		
-		Task newTask = new Task();
-		
-		newTask.setId(12345);
-		
-		taskdao.delete(newTask);
-		
+
+	public void update(int id, Task updatedTask) throws ValidationException {
+
+		TaskValidator.validate(updatedTask);
+
+		taskDAO.update(id, updatedTask);
+
 	}
-	
-	
-	public void findById(int taskId) {
-		
-		TaskDAO taskdao = new TaskDAO();
-		
-		taskdao.findById(taskId);
+
+	public void delete(int id) {
+
+		taskDAO.delete(id);
+
 	}
-	
-	
-	
+
+	public void findById(int id) {
+
+		taskDAO.findById(id);
+
+	}
+
+	public int count() {
+		return taskDAO.count();
+
+	}
+
+	public List<Task> getAll() {
+
+		List<Task> TaskList = taskDAO.findAll();
+
+		return TaskList;
+
+	}
+
 }
